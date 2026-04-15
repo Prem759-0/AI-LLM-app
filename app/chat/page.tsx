@@ -1,11 +1,11 @@
 "use client";
 
 import Sidebar from "../../components/Sidebar";
-import Header from "@/components/Header";
-import ChatMessage from "@/components/ChatMessage";
-import ChatInput from "@/components/ChatInput";
-import Welcome from "@/components/Welcome";
-import { useStore } from "@/store/useStore";
+import Header from "../../components/Header";
+import ChatMessage from "../../components/ChatMessage";
+import ChatInput from "../../components/ChatInput";
+import Welcome from "../../components/Welcome";
+import { useStore } from "../../store/useStore";
 
 export default function Chat() {
   const { messages, addMessage, updateLastMessage } = useStore();
