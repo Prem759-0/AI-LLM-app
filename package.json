@@ -14,3 +14,8 @@
     "zustand": "^4.5.2"
   }
 }
+
+"dependencies": {
+  "framer-motion": "^11.0.0",
+  "clsx": "^2.1.0"
+}
