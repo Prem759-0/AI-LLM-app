@@ -1,16 +1,34 @@
 import { create } from "zustand";
 
-export const useStore = create((set) => ({
+type Message = {
+  role: "user" | "ai";
+  content: string;
+};
+
+type Store = {
+  messages: Message[];
+  loading: boolean;
+
+  addMessage: (msg: Message) => void;
+  updateLastMessage: (content: string) => void;
+  setLoading: (val: boolean) => void;
+};
+
+export const useStore = create<Store>((set) => ({
   messages: [],
   loading: false,
 
   addMessage: (msg) =>
-    set((state) => ({ messages: [...state.messages, msg] })),
+    set((state) => ({
+      messages: [...state.messages, msg]
+    })),
 
   updateLastMessage: (content) =>
     set((state) => {
       const msgs = [...state.messages];
-      msgs[msgs.length - 1].content = content;
+      if (msgs.length > 0) {
+        msgs[msgs.length - 1].content = content;
+      }
       return { messages: msgs };
     }),
 
