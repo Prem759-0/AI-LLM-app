@@ -18,21 +18,21 @@ export default async function handler(req, res) {
 
   res.setHeader("Content-Type", "text/event-stream");
 
-  if (!response.body) {
+if (!response.body) {
   res.status(500).json({ error: "No response body from AI" });
   return;
 }
 
 const reader = response.body.getReader();
-  const decoder = new TextDecoder();
+const decoder = new TextDecoder();
 
-  while (true) {
-    const { done, value } = await reader.read();
-    if (done) break;
+while (true) {
+  const { done, value } = await reader.read();
+  if (done) break;
 
-    const chunk = decoder.decode(value);
-    res.write(chunk);
-  }
+  const chunk = decoder.decode(value);
+  res.write(chunk);
+}
 
-  res.end();
+res.end();
 }
