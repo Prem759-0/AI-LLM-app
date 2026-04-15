@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: Inter, sans-serif;
-  background: #0f0f0f;
+  background: radial-gradient(circle at top, #2a1f3d, #0f0f0f);
   color: white;
 }
 
@@ -9,6 +9,9 @@ body {
   box-sizing: border-box;
 }
 
-input, textarea {
-  outline: none;
+.glass {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.1);
 }
