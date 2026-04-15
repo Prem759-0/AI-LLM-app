@@ -18,7 +18,12 @@ export default async function handler(req, res) {
 
   res.setHeader("Content-Type", "text/event-stream");
 
-  const reader = response.body.getReader();
+  if (!response.body) {
+  res.status(500).json({ error: "No response body from AI" });
+  return;
+}
+
+const reader = response.body.getReader();
   const decoder = new TextDecoder();
 
   while (true) {
