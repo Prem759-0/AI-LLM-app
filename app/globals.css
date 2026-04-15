@@ -2,12 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-/* background like your UI */
+/* 🌈 Background (same soft gradient) */
 body {
-  @apply bg-gradient-to-br from-[#0b0b0f] via-[#1a1523] to-[#2a1f3d] text-white;
+  background: radial-gradient(circle at 20% 20%, #e9d5ff, transparent 40%),
+              radial-gradient(circle at 80% 80%, #c4b5fd, transparent 40%),
+              #f5f3ff;
+  color: #111;
 }
 
-/* glass effect */
+/* 🧊 Glass UI */
 .glass {
-  @apply bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+/* ✨ Smooth animation */
+.fade-in {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px);}
+  to { opacity: 1; transform: translateY(0);}
 }
