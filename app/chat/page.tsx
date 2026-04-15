@@ -14,45 +14,46 @@ export default function Chat() {
     addMessage({ role: "user", content: text });
     addMessage({ role: "ai", content: "" });
 
-    const res = await fetch("/api/chat", {
-      method: "POST",
-      body: JSON.stringify({ message: text }),
-      headers: { "Content-Type": "application/json" }
-    });
+  const res = await fetch("/api/chat", {
+  method: "POST",
+  body: JSON.stringify({ message: text }),
+  headers: { "Content-Type": "application/json" }
+});
 
-   if (!res.body) return;
+if (!res.body) {
+  console.error("No response body");
+  return;
+}
 
 const reader = res.body.getReader();
-    const decoder = new TextDecoder();
+const decoder = new TextDecoder();
 
-    let fullText = "";
+let fullText = "";
 
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
+while (true) {
+  const { done, value } = await reader.read();
+  if (done) break;
 
-      const chunk = decoder.decode(value);
+  const chunk = decoder.decode(value);
+  const lines = chunk.split("\n");
 
-      const lines = chunk.split("\n");
+  for (let line of lines) {
+    if (!line.startsWith("data:")) continue;
 
-      for (let line of lines) {
-        if (!line.startsWith("data:")) continue;
+    const json = line.replace("data:", "").trim();
+    if (json === "[DONE]") continue;
 
-        const json = line.replace("data:", "").trim();
+    try {
+      const parsed = JSON.parse(json);
+      const content = parsed.choices?.[0]?.delta?.content;
 
-        if (json === "[DONE]") continue;
-
-        try {
-          const parsed = JSON.parse(json);
-          const content = parsed.choices?.[0]?.delta?.content;
-
-          if (content) {
-            fullText += content;
-            updateLastMessage(fullText);
-          }
-        } catch {}
+      if (content) {
+        fullText += content;
+        updateLastMessage(fullText);
       }
-    }
+    } catch {}
+  }
+}
   };
 
   return (
