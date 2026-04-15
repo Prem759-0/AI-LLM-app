@@ -1,13 +1,14 @@
 export default function Welcome() {
   return (
-    <div className="flex flex-col items-center justify-center mt-32 text-center">
-      <div className="w-20 h-20 rounded-full bg-purple-500 blur-xl mb-4" />
+    <div className="flex flex-col items-center justify-center h-full text-center fade-in">
 
-      <h1 className="text-4xl font-semibold text-purple-300">
+      <div className="w-24 h-24 rounded-full bg-purple-300 blur-2xl mb-6" />
+
+      <h1 className="text-4xl font-semibold text-purple-400">
         Hello, Jackson
       </h1>
 
-      <p className="text-gray-400 mt-2">
+      <p className="text-gray-600 mt-2">
         How can I assist you today?
       </p>
 
