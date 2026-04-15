@@ -3,6 +3,7 @@
 import Sidebar from "@/components/Sidebar";
 import ChatMessage from "@/components/ChatMessage";
 import ChatInput from "@/components/ChatInput";
+import Welcome from "@/components/Welcome";
 import { useStore } from "@/store/useStore";
 
 export default function Chat() {
@@ -52,16 +53,13 @@ export default function Chat() {
   };
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen p-4 gap-4">
       <Sidebar />
 
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col glass">
         <div className="flex-1 overflow-auto p-6">
           {messages.length === 0 ? (
-            <div className="text-center mt-40 text-gray-400">
-              <h1 className="text-3xl mb-2">Hello 👋</h1>
-              <p>How can I assist you today?</p>
-            </div>
+            <Welcome />
           ) : (
             messages.map((m, i) => (
               <ChatMessage key={i} {...m} />
