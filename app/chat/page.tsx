@@ -20,7 +20,9 @@ export default function Chat() {
       headers: { "Content-Type": "application/json" }
     });
 
-    const reader = res.body.getReader();
+   if (!res.body) return;
+
+const reader = res.body.getReader();
     const decoder = new TextDecoder();
 
     let fullText = "";
