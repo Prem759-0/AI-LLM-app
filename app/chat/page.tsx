@@ -1,6 +1,7 @@
 "use client";
 
 import Sidebar from "@/components/Sidebar";
+import Header from "@/components/Header";
 import ChatMessage from "@/components/ChatMessage";
 import ChatInput from "@/components/ChatInput";
 import Welcome from "@/components/Welcome";
@@ -57,6 +58,8 @@ export default function Chat() {
       <Sidebar />
 
       <div className="flex-1 flex flex-col glass">
+        <Header />
+
         <div className="flex-1 overflow-auto p-6">
           {messages.length === 0 ? (
             <Welcome />
