@@ -57,7 +57,7 @@ while (true) {
   };
 
   return (
-    <div className="flex h-screen p-4 gap-4">
+    <div className="flex h-screen p-6 gap-6 bg-transparent">
       <Sidebar />
 
       <div className="flex-1 flex flex-col glass">
