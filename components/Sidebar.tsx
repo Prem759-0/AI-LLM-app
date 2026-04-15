@@ -1,15 +1,28 @@
 "use client";
 
+import { motion } from "framer-motion";
+
 export default function Sidebar() {
   return (
-    <div className="w-64 bg-[#181818] h-full p-4 flex flex-col">
-      <h2 className="text-xl mb-4">Cortex</h2>
+    <motion.div
+      initial={{ x: -100, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      className="w-64 h-full p-4 glass flex flex-col gap-4"
+    >
+      <div className="text-xl font-bold">Cortex</div>
 
-      <button className="bg-white text-black rounded p-2 mb-4">
-        + New Chat
+      <button className="bg-black text-white rounded-xl p-2">
+        + New chat
       </button>
 
-      <div className="text-gray-400 text-sm">No chats yet</div>
-    </div>
+      <input
+        placeholder="Search"
+        className="p-2 rounded-lg bg-transparent border border-gray-600"
+      />
+
+      <div className="text-gray-400 text-sm mt-4">
+        No chats yet
+      </div>
+    </motion.div>
   );
 }
