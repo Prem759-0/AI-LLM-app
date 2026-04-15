@@ -1,33 +1,29 @@
 "use client";
 
-import { User } from "lucide-react";
-
 export default function Sidebar() {
   return (
-    <div className="w-64 h-full p-4 glass flex flex-col justify-between">
-      <div>
-        <div className="text-xl font-bold mb-4">Cortex</div>
+    <div className="w-64 h-full glass p-4 flex flex-col justify-between fade-in">
 
-        <button className="bg-black text-white rounded-xl p-2 w-full mb-4">
+      <div>
+        <div className="text-lg font-semibold mb-4">Cortex</div>
+
+        <button className="w-full bg-black text-white rounded-lg py-2 mb-4">
           + New chat
         </button>
 
         <input
           placeholder="Search"
-          className="p-2 rounded-lg bg-transparent border border-white/10 w-full"
+          className="w-full p-2 rounded-lg border border-gray-200 bg-white/50"
         />
 
-        <div className="text-gray-400 text-sm mt-6">
+        <div className="mt-6 text-sm text-gray-500">
           No chats yet
         </div>
       </div>
 
-      <div className="flex items-center gap-2 p-2 rounded-lg hover:bg-white/10">
-        <User size={18} />
-        <div>
-          <div className="text-sm">User</div>
-          <div className="text-xs text-gray-400">email@gmail.com</div>
-        </div>
+      <div className="text-sm">
+        <div>User</div>
+        <div className="text-gray-400 text-xs">email@gmail.com</div>
       </div>
     </div>
   );
