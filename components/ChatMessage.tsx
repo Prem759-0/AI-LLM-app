@@ -1,15 +1,9 @@
-import { motion } from "framer-motion";
-
 export default function ChatMessage({ role, content }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      className={`mb-4 flex ${role === "user" ? "justify-end" : "justify-start"}`}
-    >
-      <div className="glass px-4 py-2 max-w-[70%]">
+    <div className={`mb-6 flex ${role === "user" ? "justify-end" : "justify-start"}`}>
+      <div className="glass px-4 py-3 max-w-[65%] text-sm leading-relaxed">
         {content}
       </div>
-    </motion.div>
+    </div>
   );
 }
